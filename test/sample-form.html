@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Sample Job Application Form (Dev Fixture)</title>
+<style>
+  body { font-family: sans-serif; max-width: 600px; margin: 40px auto; }
+  label, fieldset { display: block; margin-bottom: 14px; }
+  input, select, textarea { display: block; width: 100%; padding: 6px; margin-top: 4px; }
+  fieldset { border: 1px solid #ccc; padding: 10px; }
+</style>
+</head>
+<body>
+<h1>Sample Job Application (Local Test Fixture)</h1>
+<form>
+
+  <!-- label[for] case -->
+  <label for="fid">First Name</label>
+  <input id="fid" type="text" name="unused1" />
+
+  <!-- aria-label only case -->
+  <input type="text" aria-label="Last Name" name="unused2" />
+
+  <!-- placeholder only case -->
+  <input type="text" placeholder="Email address" name="unused3" />
+
+  <!-- cryptic name, nearby text instead -->
+  <div>Phone</div>
+  <input type="text" name="field_3829" />
+
+  <!-- select for state -->
+  <label for="state-select">State</label>
+  <select id="state-select">
+    <option value="">Select…</option>
+    <option value="CA">California</option>
+    <option value="NY">New York</option>
+    <option value="TX">Texas</option>
+  </select>
+
+  <!-- select for country with synonym test -->
+  <label for="country-select">Country</label>
+  <select id="country-select">
+    <option value="">Select…</option>
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="GB">United Kingdom</option>
+  </select>
+
+  <!-- radio group for work authorization -->
+  <fieldset>
+    <legend>Are you authorized to work in the US?</legend>
+    <label><input type="radio" name="workauth" value="yes" /> Yes</label>
+    <label><input type="radio" name="workauth" value="no" /> No</label>
+  </fieldset>
+
+  <!-- wrapping label textarea -->
+  <label>
+    Cover Letter
+    <textarea name="coverletter" rows="4"></textarea>
+  </label>
+
+  <!-- file input, should always be skipped -->
+  <label>
+    Resume Upload
+    <input type="file" name="resume" />
+  </label>
+
+  <!-- denylist test: should never be touched -->
+  <label><input type="checkbox" name="agree" /> I agree to the Terms of Service</label>
+
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Job Autofill</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <img src="../icons/icon48.png" width="20" height="20" alt="" />
+    <span>Job Autofill</span>
+  </header>
+
+  <button id="fillBtn" class="btn btn-primary">Fill This Page</button>
+
+  <div id="status" class="status"></div>
+
+  <button id="scanBtn" class="btn btn-secondary">Save New Answers From This Page</button>
+
+  <div id="reviewList" class="review-list" style="display:none"></div>
+  <button id="saveLearnedBtn" class="btn btn-primary" style="display:none">Save Selected</button>
+
+  <button id="optionsBtn" class="btn btn-link">Edit My Info</button>
+
+  <script src="../shared/constants.js"></script>
+  <script src="../shared/schema.js"></script>
+  <script src="../shared/storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

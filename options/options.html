@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Job Autofill — My Info</title>
+<link rel="stylesheet" href="options.css" />
+</head>
+<body>
+<header class="topbar">
+  <h1>Job Autofill — My Info</h1>
+  <button id="saveBtn" class="btn btn-primary">Save All</button>
+  <span id="saveStatus" class="save-status"></span>
+</header>
+
+<div class="layout">
+  <nav class="sidenav">
+    <a href="#section-personal">Personal Info</a>
+    <a href="#section-contact">Contact</a>
+    <a href="#section-address">Address</a>
+    <a href="#section-work-auth">Work Authorization</a>
+    <a href="#section-experience">Experience &amp; Preferences</a>
+    <a href="#section-work-history">Work History</a>
+    <a href="#section-education">Education</a>
+    <a href="#section-links">Links</a>
+    <a href="#section-demographics">EEO / Demographics</a>
+    <a href="#section-documents">Documents</a>
+    <a href="#section-freetext">Default Answers</a>
+    <a href="#section-import-export">Import / Export</a>
+    <a href="#section-danger">Danger Zone</a>
+  </nav>
+
+  <main class="content">
+
+    <section id="section-personal">
+      <h2>Personal Info</h2>
+      <div class="field-grid">
+        <label>First Name <input type="text" id="personal.firstName" /></label>
+        <label>Middle Name <input type="text" id="personal.middleName" /></label>
+        <label>Last Name <input type="text" id="personal.lastName" /></label>
+        <label>Preferred Name <input type="text" id="personal.preferredName" /></label>
+        <label>Pronouns <input type="text" id="personal.pronouns" placeholder="e.g. she/her, he/him, they/them" /></label>
+        <label>Date of Birth <input type="date" id="personal.dateOfBirth" /></label>
+      </div>
+    </section>
+
+    <section id="section-contact">
+      <h2>Contact</h2>
+      <div class="field-grid">
+        <label>Email Address <input type="email" id="contact.email" /></label>
+        <label>Phone Country Code
+          <select id="contact.phoneCountryCode">
+            <option value="+1">+1 (US/Canada)</option>
+            <option value="+44">+44 (UK)</option>
+            <option value="+91">+91 (India)</option>
+            <option value="+61">+61 (Australia)</option>
+            <option value="+49">+49 (Germany)</option>
+          </select>
+        </label>
+        <label>Phone Number <input type="tel" id="contact.phone" /></label>
+      </div>
+    </section>
+
+    <section id="section-address">
+      <h2>Address</h2>
+      <div class="field-grid">
+        <label>Street Address (Line 1) <input type="text" id="address.street1" /></label>
+        <label>Address Line 2 <input type="text" id="address.street2" /></label>
+        <label>City <input type="text" id="address.city" /></label>
+        <label>State / Province <input type="text" id="address.state" /></label>
+        <label>ZIP / Postal Code <input type="text" id="address.zip" /></label>
+        <label>Country <input type="text" id="address.country" /></label>
+      </div>
+    </section>
+
+    <section id="section-work-auth">
+      <h2>Work Authorization</h2>
+      <div class="field-grid">
+        <label>Authorized to work in this country?
+          <select id="workAuthorization.authorizedToWorkInCountry">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <label>Require visa sponsorship?
+          <select id="workAuthorization.requiresSponsorship">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </label>
+        <label>Visa Status (if applicable) <input type="text" id="workAuthorization.visaStatus" /></label>
+      </div>
+    </section>
+
+    <section id="section-experience">
+      <h2>Experience &amp; Preferences</h2>
+      <div class="field-grid">
+        <label>Total Years of Experience <input type="number" min="0" id="experience.totalYearsExperience" /></label>
+        <label>Current Job Title <input type="text" id="experience.currentTitle" /></label>
+        <label>Current Employer <input type="text" id="experience.currentEmployer" /></label>
+        <label>Desired Salary <input type="number" min="0" id="experience.desiredSalary" /></label>
+        <label>Salary Period
+          <select id="experience.desiredSalaryPeriod">
+            <option value="year">per year</option>
+            <option value="hour">per hour</option>
+          </select>
+        </label>
+        <label>Notice Period <input type="text" id="experience.noticePeriod" placeholder="e.g. 2 weeks" /></label>
+        <label>Willing to Relocate?
+          <select id="experience.willingToRelocate">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </label>
+        <label>Willing to Travel?
+          <select id="experience.willingToTravel">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section id="section-work-history">
+      <h2>Work History</h2>
+      <div id="workHistoryList" class="repeatable-list"></div>
+      <button type="button" id="addWorkHistoryBtn" class="btn btn-secondary">+ Add Job</button>
+    </section>
+
+    <section id="section-education">
+      <h2>Education</h2>
+      <div id="educationList" class="repeatable-list"></div>
+      <button type="button" id="addEducationBtn" class="btn btn-secondary">+ Add Education</button>
+    </section>
+
+    <section id="section-links">
+      <h2>Links</h2>
+      <div class="field-grid">
+        <label>LinkedIn URL <input type="url" id="links.linkedin" /></label>
+        <label>GitHub URL <input type="url" id="links.github" /></label>
+        <label>Portfolio / Work Samples URL <input type="url" id="links.portfolio" /></label>
+        <label>Personal Website URL <input type="url" id="links.website" /></label>
+      </div>
+    </section>
+
+    <section id="section-demographics">
+      <details id="demographicsDetails">
+        <summary>EEO / Demographic Information (optional — leave blank to skip)</summary>
+        <p class="hint">
+          These questions are legally voluntary on all U.S. job applications. The extension
+          will skip EEO fields entirely on every site unless you uncheck "Skip EEO autofill"
+          below and fill in values.
+        </p>
+        <label class="checkbox-row">
+          <input type="checkbox" id="demographics.optOut" />
+          Skip EEO autofill for all sites
+        </label>
+        <div class="field-grid" id="demographicsFields">
+          <label>Gender <input type="text" id="demographics.gender" /></label>
+          <label>Race / Ethnicity <input type="text" id="demographics.race" /></label>
+          <label>Veteran Status <input type="text" id="demographics.veteranStatus" /></label>
+          <label>Disability Status <input type="text" id="demographics.disabilityStatus" /></label>
+          <label>Hispanic or Latino? <input type="text" id="demographics.hispanicOrLatino" /></label>
+        </div>
+      </details>
+    </section>
+
+    <section id="section-documents">
+      <h2>Documents</h2>
+      <label class="block-label">
+        Resume Text (plain text, used for "paste your resume" fields)
+        <textarea id="documents.resumeText" rows="10"></textarea>
+      </label>
+
+      <label class="block-label">
+        Store a copy of your resume file locally (for your reference only — cannot
+        auto-fill file upload fields; browsers block that for security)
+        <input type="file" id="resumeFileInput" accept=".pdf,.doc,.docx" />
+      </label>
+      <div id="resumeFileStatus" class="hint"></div>
+      <a id="resumeDownloadLink" class="btn btn-secondary" style="display:none" download>Download stored resume</a>
+      <button type="button" id="clearResumeBtn" class="btn btn-secondary" style="display:none">Remove stored resume</button>
+
+      <label class="block-label">
+        Cover Letter Template
+        <textarea id="documents.coverLetterTemplate" rows="8"></textarea>
+      </label>
+    </section>
+
+    <section id="section-freetext">
+      <h2>Default Free-Text Answers</h2>
+      <p class="hint">Matched heuristically to open-ended questions — review before submitting.</p>
+      <label class="block-label">
+        Why do you want to work here / at this company?
+        <textarea id="freeTextAnswers.whyThisCompany" rows="4"></textarea>
+      </label>
+      <label class="block-label">
+        Why are you interested in this role?
+        <textarea id="freeTextAnswers.whyThisRole" rows="4"></textarea>
+      </label>
+      <label class="block-label">
+        What is your greatest strength?
+        <textarea id="freeTextAnswers.greatestStrength" rows="4"></textarea>
+      </label>
+      <label class="block-label">
+        Anything else you'd like to share?
+        <textarea id="freeTextAnswers.additionalInfo" rows="4"></textarea>
+      </label>
+    </section>
+
+    <section id="section-import-export">
+      <h2>Import / Export</h2>
+      <p class="hint">
+        Paste a JSON profile (matching the schema below) and click Import to fill every
+        field above in one go — handy if you're pulling info from a resume or another source.
+        Use Export to copy out what's currently saved.
+      </p>
+      <label class="block-label">
+        JSON
+        <textarea id="importExportJson" rows="10" placeholder='{"personal": {"firstName": "...", "lastName": "..."}, "contact": {"email": "..."}, ...}'></textarea>
+      </label>
+      <button type="button" id="exportJsonBtn" class="btn btn-secondary">Export Current Data</button>
+      <button type="button" id="importJsonBtn" class="btn btn-primary">Import JSON</button>
+      <span id="importStatus" class="save-status"></span>
+    </section>
+
+    <section id="section-danger">
+      <h2>Danger Zone</h2>
+      <button type="button" id="resetBtn" class="btn btn-danger">Reset All Data</button>
+    </section>
+
+  </main>
+</div>
+
+<script src="../shared/constants.js"></script>
+<script src="../shared/schema.js"></script>
+<script src="../shared/storage.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

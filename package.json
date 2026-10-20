@@ -1,0 +1,19 @@
+{
+  "name": "job-autofill-extension",
+  "version": "1.0.0",
+  "description": "A personal-use Chrome extension (Manifest V3, plain JavaScript, no build step) that stores your job-application details locally and fills matching fields on any job application page with one click.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jsdom": "^30.1.3"
+  }
+}
